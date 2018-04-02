@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>lockheedmartin.png</file>
+    </qresource>
+</RCC>
