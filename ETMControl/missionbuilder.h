@@ -14,6 +14,12 @@ class MissionBuilder : public QDialog
 public:
     explicit MissionBuilder(QWidget *parent = 0);
     ~MissionBuilder();
+    QStringList subsystems;
+    QStringList vSlot;
+    QStringList clamp;
+    QStringList lock;
+    QStringList door;
+    QStringList env;
     
 private slots:
     void on_pushButton_add_clicked();
