@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,13 +27,15 @@ SOURCES += \
         main.cpp \
         login.cpp \
     homewindow.cpp \
-    missionbuilder.cpp
+    missionbuilder.cpp \
+    qcustomplot.cpp
 
 HEADERS += \
         login.h \
     homewindow.h \
     missionbuilder.h \
-    etmcontroller.h
+    etmcontroller.h \
+    qcustomplot.h
 
 FORMS += \
         login.ui \
