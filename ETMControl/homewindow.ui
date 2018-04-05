@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>882</width>
-    <height>638</height>
+    <width>941</width>
+    <height>662</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -109,16 +109,29 @@
      <string>Y</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_spoof">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>270</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Spoof</string>
+    </property>
+   </widget>
    <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>10</y>
-      <width>421</width>
-      <height>571</height>
+      <x>490</x>
+      <y>0</y>
+      <width>441</width>
+      <height>621</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_8">
+    <layout class="QVBoxLayout" name="verticalLayout_11">
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
@@ -131,14 +144,14 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_8">
+          <widget class="QLabel" name="label_tableStatus">
            <property name="text">
             <string>&lt;font color=green&gt;Home&lt;/font&gt;</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="pushButton_tableCommand">
            <property name="text">
             <string>Send Command</string>
            </property>
@@ -147,44 +160,29 @@
         </layout>
        </item>
        <item>
-        <widget class="QGroupBox" name="groupBox">
-         <property name="title">
-          <string/>
-         </property>
-         <widget class="QWidget" name="">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>20</y>
-            <width>357</width>
-            <height>30</height>
-           </rect>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_7">
-           <item>
-            <widget class="QRadioButton" name="radioButton">
-             <property name="text">
-              <string>Send Space-Side</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="radioButton_2">
-             <property name="text">
-              <string>Send Hab-Side</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="radioButton_3">
-             <property name="text">
-              <string>Send Home</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </widget>
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="QRadioButton" name="radioButton_tableSpace">
+           <property name="text">
+            <string>Send Space-Side</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButton_tableHab">
+           <property name="text">
+            <string>Send Hab-Side</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButton_tableHome">
+           <property name="text">
+            <string>Send Home</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </item>
@@ -200,14 +198,14 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_9">
+          <widget class="QLabel" name="label_clampStatus">
            <property name="text">
             <string>&lt;font color=green&gt;Secured&lt;/font&gt;</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_2">
+          <widget class="QPushButton" name="pushButton_clampCommand">
            <property name="text">
             <string>Send Command</string>
            </property>
@@ -217,6 +215,9 @@
        </item>
        <item>
         <widget class="QGroupBox" name="groupBox_2">
+         <property name="styleSheet">
+          <string notr="true">border:none</string>
+         </property>
          <property name="title">
           <string/>
          </property>
@@ -225,28 +226,177 @@
            <rect>
             <x>0</x>
             <y>10</y>
-            <width>357</width>
+            <width>301</width>
             <height>30</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_6">
            <item>
-            <widget class="QRadioButton" name="radioButton_4">
+            <widget class="QRadioButton" name="radioButton_clampRelease">
              <property name="text">
               <string>Release Experiment</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QRadioButton" name="radioButton_5">
+            <widget class="QRadioButton" name="radioButton_clampSecure">
              <property name="text">
-              <string>Clamp Experiment</string>
+              <string>Secure Experiment</string>
              </property>
             </widget>
            </item>
           </layout>
          </widget>
         </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_8">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_12">
+         <item>
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string>Airlock Door</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_9">
+             <item>
+              <widget class="QLabel" name="label_15">
+               <property name="text">
+                <string>Space-Side:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_doorSpaceStatus">
+               <property name="text">
+                <string>&lt;font color=green&gt;Closed&lt;/font&gt;</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_8">
+             <item>
+              <widget class="QLabel" name="label_16">
+               <property name="text">
+                <string>Hab-Side:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_doorHabStatus">
+               <property name="text">
+                <string>&lt;font color=green&gt;Closed&lt;/font&gt;</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_10">
+           <item>
+            <widget class="QPushButton" name="pushButton_doorSpaceCommand">
+             <property name="text">
+              <string>Send Command</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_doorHabCommand">
+             <property name="text">
+              <string>Send Command</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_6">
+         <item>
+          <widget class="QGroupBox" name="groupBox">
+           <property name="styleSheet">
+            <string notr="true">border:none</string>
+           </property>
+           <property name="title">
+            <string/>
+           </property>
+           <widget class="QWidget" name="">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>357</width>
+              <height>19</height>
+             </rect>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <item>
+              <widget class="QRadioButton" name="radioButton_doorSpaceOpen">
+               <property name="text">
+                <string>Open Space-Side</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="radioButton_doorSpaceClose">
+               <property name="text">
+                <string>Close Space-Side</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_5">
+           <property name="styleSheet">
+            <string notr="true">border:none</string>
+           </property>
+           <property name="title">
+            <string/>
+           </property>
+           <widget class="QWidget" name="">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>-2</y>
+              <width>357</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QRadioButton" name="radioButton_doorHabOpen">
+               <property name="text">
+                <string>Open Hab-Side</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="radioButton_doorHabClose">
+               <property name="text">
+                <string>Close Hab-Side</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </item>
@@ -273,7 +423,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLabel" name="label_10">
+              <widget class="QLabel" name="label_lockSpaceStatus">
                <property name="text">
                 <string>&lt;font color=green&gt;Locked&lt;/font&gt;</string>
                </property>
@@ -291,7 +441,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLabel" name="label_17">
+              <widget class="QLabel" name="label_lockHabStatus">
                <property name="text">
                 <string>&lt;font color=green&gt;Locked&lt;/font&gt;</string>
                </property>
@@ -304,14 +454,14 @@
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_9">
            <item>
-            <widget class="QPushButton" name="pushButton_3">
+            <widget class="QPushButton" name="pushButton_lockSpaceCommand">
              <property name="text">
               <string>Send Command</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_8">
+            <widget class="QPushButton" name="pushButton_lockHabCommand">
              <property name="text">
               <string>Send Command</string>
              </property>
@@ -323,6 +473,9 @@
        </item>
        <item>
         <widget class="QGroupBox" name="groupBox_3">
+         <property name="styleSheet">
+          <string notr="true">border:none</string>
+         </property>
          <property name="title">
           <string/>
          </property>
@@ -337,14 +490,14 @@
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_5">
            <item>
-            <widget class="QRadioButton" name="radioButton_6">
+            <widget class="QRadioButton" name="radioButton_lockSpaceUnlock">
              <property name="text">
               <string>Unlock Space-Side</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QRadioButton" name="radioButton_7">
+            <widget class="QRadioButton" name="radioButton_lockSpaceLock">
              <property name="text">
               <string>Lock Space-Side</string>
              </property>
@@ -356,6 +509,9 @@
        </item>
        <item>
         <widget class="QGroupBox" name="groupBox_4">
+         <property name="styleSheet">
+          <string notr="true">border:none</string>
+         </property>
          <property name="title">
           <string/>
          </property>
@@ -370,155 +526,16 @@
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
            <item>
-            <widget class="QRadioButton" name="radioButton_8">
+            <widget class="QRadioButton" name="radioButton_lockHabUnlock">
              <property name="text">
               <string>Unlock Hab-Side</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QRadioButton" name="radioButton_9">
+            <widget class="QRadioButton" name="radioButton_lockHabLock">
              <property name="text">
               <string>Lock Hab-Side</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout_6">
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_12">
-         <item>
-          <widget class="QLabel" name="label_6">
-           <property name="text">
-            <string>Airlock Door</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_2">
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_9">
-             <item>
-              <widget class="QLabel" name="label_15">
-               <property name="text">
-                <string>Space-Side:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_11">
-               <property name="text">
-                <string>&lt;font color=green&gt;Closed&lt;/font&gt;</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_8">
-             <item>
-              <widget class="QLabel" name="label_16">
-               <property name="text">
-                <string>Hab-Side:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_18">
-               <property name="text">
-                <string>&lt;font color=green&gt;Closed&lt;/font&gt;</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_10">
-           <item>
-            <widget class="QPushButton" name="pushButton_4">
-             <property name="text">
-              <string>Send Command</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton_6">
-             <property name="text">
-              <string>Send Command</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="groupBox_5">
-         <property name="title">
-          <string/>
-         </property>
-         <widget class="QWidget" name="">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>357</width>
-            <height>19</height>
-           </rect>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout">
-           <item>
-            <widget class="QRadioButton" name="radioButton_10">
-             <property name="text">
-              <string>Open Space-Side</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="radioButton_11">
-             <property name="text">
-              <string>Close Space-Side</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </widget>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="groupBox_6">
-         <property name="title">
-          <string/>
-         </property>
-         <widget class="QWidget" name="">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>10</y>
-            <width>357</width>
-            <height>19</height>
-           </rect>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
-           <item>
-            <widget class="QRadioButton" name="radioButton_12">
-             <property name="text">
-              <string>Open Hab-Side</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="radioButton_13">
-             <property name="text">
-              <string>Close Hab-Side</string>
              </property>
             </widget>
            </item>
@@ -540,14 +557,14 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_12">
+          <widget class="QLabel" name="label_envStatus">
            <property name="text">
             <string>&lt;font color=green&gt;Pressurized&lt;/font&gt;</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_5">
+          <widget class="QPushButton" name="pushButton_envCommand">
            <property name="text">
             <string>Send Command</string>
            </property>
@@ -557,6 +574,9 @@
        </item>
        <item>
         <widget class="QGroupBox" name="groupBox_7">
+         <property name="styleSheet">
+          <string notr="true">border:none</string>
+         </property>
          <property name="title">
           <string/>
          </property>
@@ -565,20 +585,20 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>357</width>
+            <width>271</width>
             <height>30</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_3">
            <item>
-            <widget class="QRadioButton" name="radioButton_14">
+            <widget class="QRadioButton" name="radioButton_envDepressurize">
              <property name="text">
               <string>Depressurize</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QRadioButton" name="radioButton_15">
+            <widget class="QRadioButton" name="radioButton_envPressurize">
              <property name="text">
               <string>Pressurize</string>
              </property>
@@ -598,7 +618,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>882</width>
+     <width>941</width>
      <height>21</height>
     </rect>
    </property>

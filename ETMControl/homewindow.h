@@ -16,9 +16,11 @@ public:
     explicit HomeWindow(QWidget *parent = 0);
     ~HomeWindow();
 
+    void delay(int millisecondsToWait);
     void addPoint(double x, double y);
     void clearData();
     void plot();
+    void spoofData();
 
 private slots:
     void on_pushButton_builder_clicked();
@@ -26,6 +28,22 @@ private slots:
     void on_pushButton_add_clicked();
 
     void on_pushButton_clear_clicked();
+
+    void on_pushButton_tableCommand_clicked();
+
+    void on_pushButton_clampCommand_clicked();
+
+    void on_pushButton_doorSpaceCommand_clicked();
+
+    void on_pushButton_doorHabCommand_clicked();
+
+    void on_pushButton_lockSpaceCommand_clicked();
+
+    void on_pushButton_lockHabCommand_clicked();
+
+    void on_pushButton_envCommand_clicked();
+
+    void on_pushButton_spoof_clicked();
 
 private:
     Ui::HomeWindow *ui;
