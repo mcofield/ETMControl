@@ -1,9 +1,11 @@
 #include "homewindow.h"
+#include "communication.h"
 #include "ui_homewindow.h"
 #include <QMessageBox>
 #include <QLabel>
 #include <QWidget>
 #include <QTime>
+#include <QPixmap>
 
 HomeWindow::HomeWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -14,10 +16,29 @@ HomeWindow::HomeWindow(QWidget *parent) :
     ui->plot->addGraph();
     ui->plot->graph(0)->setScatterStyle(QCPScatterStyle::ssCircle);
     ui->plot->graph(0)->setLineStyle(QCPGraph::lsLine);
+
+    QPixmap pix(":/img/modelStates/allSafe.jpg");
+    ui->label_model->setPixmap(pix);
+    int logoWidth = ui->label_model->width();
+    int logoHeight = ui->label_model->height();
+    ui->label_model->setPixmap(pix.scaled(logoWidth,logoHeight,Qt::KeepAspectRatio));
 }
 
 HomeWindow::~HomeWindow(){
     delete ui;
+}
+
+CommPacket buildPacket(uint8_t typ,uint8_t com, uint8_t len, uint8_t dat){
+    CommPacket packet;
+    packet.type = typ;
+    packet.command = com;
+    packet.length = len;
+    packet.data = dat;
+    return packet;
+}
+
+CommPacket sendPacket(CommPacket msg){
+    
 }
 
 void HomeWindow::delay( int millisecondsToWait ){
@@ -83,6 +104,11 @@ void HomeWindow::on_pushButton_clear_clicked(){
 void HomeWindow::on_pushButton_tableCommand_clicked(){
     if(ui->radioButton_tableHab->isChecked()){
         ui->label_tableStatus->setText("<font color=orange>Hab-side</font>");
+        QPixmap pix(":/img/modelStates/fullExtensionHab.jpg");
+        ui->label_model->setPixmap(pix);
+        int logoWidth = ui->label_model->width();
+        int logoHeight = ui->label_model->height();
+        ui->label_model->setPixmap(pix.scaled(logoWidth,logoHeight,Qt::KeepAspectRatio));
     }
     else if(ui->radioButton_tableHome->isChecked()){
         ui->label_tableStatus->setText("<font color=green>Home</font>");
@@ -125,6 +151,11 @@ void HomeWindow::on_pushButton_doorHabCommand_clicked(){
     }
     else if(ui->radioButton_doorHabOpen->isChecked()){
         ui->label_doorHabStatus->setText("<font color=orange>Open</font>");
+        QPixmap pix(":/img/modelStates/habDoorOpen.jpg");
+        ui->label_model->setPixmap(pix);
+        int logoWidth = ui->label_model->width();
+        int logoHeight = ui->label_model->height();
+        ui->label_model->setPixmap(pix.scaled(logoWidth,logoHeight,Qt::KeepAspectRatio));
     }
     else{
         QMessageBox::warning(this,"Command Error","No hab-side door action selected.");

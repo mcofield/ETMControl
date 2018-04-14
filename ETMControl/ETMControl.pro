@@ -35,7 +35,9 @@ HEADERS += \
     homewindow.h \
     missionbuilder.h \
     etmcontroller.h \
-    qcustomplot.h
+    qcustomplot.h \
+    communication.h \
+    defines.h
 
 FORMS += \
         login.ui \
