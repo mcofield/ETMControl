@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui printsupport
+QT       += core gui printsupport serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -37,7 +37,8 @@ HEADERS += \
     etmcontroller.h \
     qcustomplot.h \
     communication.h \
-    defines.h
+    defines.h \
+    buffer.h
 
 FORMS += \
         login.ui \

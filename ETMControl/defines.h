@@ -33,6 +33,10 @@
 #define UART_COMMAND_CLOSE_HAB                  0x18
 #define UART_COMMAND_CLOSE_SPC                  0x19
 
+//Environmental Commands
+#define UART_COMMAND_DEPRESSURIZE               0x28
+#define UART_COMMAND_PRESSURIZE                 0x29
+
 //Data commands
 #define UART_COMMAND_DATA_TABLE_CAP_SENSE       0x20
 #define UART_COMMAND_DATA_PLATE_CAP_SENSE       0x21

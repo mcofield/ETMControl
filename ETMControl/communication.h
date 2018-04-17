@@ -4,16 +4,19 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "defines.h"
+#include <QObject>
 
-typedef struct CommPacket{
+class CommPacket : QObject{
+    Q_OBJECT
+public:
     uint8_t type;
     uint8_t command;
     uint8_t length;
-    uint8_t data[sizeof(int)];
-} commPacket;
+    uint8_t data;
+    CommPacket (uint8_t typ,uint8_t com, uint8_t len, uint8_t dat);
+    void sendPacket();
+};
 
-CommPacket buildPacket(uint8_t typ,uint8_t com, uint8_t len, uint8_t dat);
-bool sendPacket(CommPacket message);
-CommPacket receivePacket();
+
 
 #endif // COMMUNICATION_H
