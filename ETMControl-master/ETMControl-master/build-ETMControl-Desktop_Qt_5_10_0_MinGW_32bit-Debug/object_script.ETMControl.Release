@@ -1,0 +1,14 @@
+INPUT(
+./release\main.o
+./release\login.o
+./release\homewindow.o
+./release\missionbuilder.o
+./release\qcustomplot.o
+./release\qrc_resources.o
+./release\moc_login.o
+./release\moc_homewindow.o
+./release\moc_missionbuilder.o
+./release\moc_qcustomplot.o
+./release\moc_communication.o
+./release\moc_buffer.o
+);
