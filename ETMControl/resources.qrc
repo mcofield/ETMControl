@@ -1,10 +1,6 @@
 <RCC>
     <qresource prefix="/img">
         <file>lockheedmartin.png</file>
-        <file>modelStates/allSafe.jpg</file>
-        <file>modelStates/fullExtensionHab.jpg</file>
-        <file>modelStates/habDoorOpen.jpg</file>
-        <file>modelStates/template.psd</file>
         <file>etmcontroller.h</file>
         <file>home.cpp</file>
         <file>homewindow.cpp</file>
@@ -16,5 +12,20 @@
         <file>missionbuilder.h</file>
         <file>qcustomplot.cpp</file>
         <file>qcustomplot.h</file>
+        <file>modelStates/depressurizedEmpty.png</file>
+        <file>modelStates/depressurizedMounted.png</file>
+        <file>modelStates/habExtendedEmpty.png</file>
+        <file>modelStates/habExtendedMounted.png</file>
+        <file>modelStates/habOpenEmpty.png</file>
+        <file>modelStates/habOpenMounted.png</file>
+        <file>modelStates/pressurizedEmpty.png</file>
+        <file>modelStates/pressurizedMounted.png</file>
+        <file>modelStates/spaceExtendedEmpty.png</file>
+        <file>modelStates/spaceExtendedMounted.png</file>
+        <file>modelStates/spaceOpenEmpty.png</file>
+        <file>modelStates/spaceOpenMounted.png</file>
+        <file>buffer.h</file>
+        <file>communication.h</file>
+        <file>defines.h</file>
     </qresource>
 </RCC>

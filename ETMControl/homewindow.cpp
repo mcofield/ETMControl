@@ -23,7 +23,7 @@ HomeWindow::HomeWindow(QWidget *parent) :
     ui->plot->graph(0)->setScatterStyle(QCPScatterStyle::ssCircle);
     ui->plot->graph(0)->setLineStyle(QCPGraph::lsLine);
 
-    QPixmap pix(":/img/modelStates/allSafe.jpg");
+    QPixmap pix(":/img/modelStates/pressurizedEmpty.png");
     ui->label_model->setPixmap(pix);
     int logoWidth = ui->label_model->width();
     int logoHeight = ui->label_model->height();
@@ -38,7 +38,19 @@ HomeWindow::HomeWindow(QWidget *parent) :
     serial.open(QIODevice::ReadWrite);
 
     const QByteArray currentData;
-    QObject::connect(&serial, &QSerialPort::readyRead,&buffer,&Buffer::receivePacket);
+
+//    QObject::connect(&serial, &QSerialPort::readyRead,&buffer,&Buffer::receivePacket);
+    QObject::connect(&serial, &QSerialPort::readyRead,[&]
+    {
+        QByteArray data = serial.readAll();
+        //mutex->lock()
+        for(int i = 0;i<data.size();i++){
+            buffer.queue.enqueue(data[i]);
+//            QDebug
+        }
+//        buffer.queue.push_back();
+//        QDebug
+    });
 
 
     //create tx/rx command log
@@ -48,6 +60,9 @@ HomeWindow::~HomeWindow(){
     delete ui;
     serial.close();
     //end tx/rx command log
+}
+
+Buffer::Buffer(){
 }
 
 CommPacket::CommPacket (uint8_t typ,uint8_t com, uint8_t len, uint8_t dat){
@@ -76,7 +91,7 @@ void CommPacket::sendPacket(){
     //save to tx log
 }
 
-CommPacket receivePacket(){
+void receivePacket(){
     //const QByteArray data = serial->readAll();
     //append to the buffer.queue here
 
@@ -138,11 +153,6 @@ void HomeWindow::on_pushButton_clear_clicked(){
 void HomeWindow::on_pushButton_tableCommand_clicked(){
     if(ui->radioButton_tableHab->isChecked()){
         ui->label_tableStatus->setText("<font color=orange>Hab-side</font>");
-        QPixmap pix(":/img/modelStates/fullExtensionHab.jpg");
-        ui->label_model->setPixmap(pix);
-        int logoWidth = ui->label_model->width();
-        int logoHeight = ui->label_model->height();
-        ui->label_model->setPixmap(pix.scaled(logoWidth,logoHeight,Qt::KeepAspectRatio));
         CommPacket packet((uint8_t)0b10,(uint8_t)0x13,(uint8_t)0x00,(uint8_t)0x00);
         packet.sendPacket();
 //        sendPacket(buildPacket(0b10,0x13,0x00,0x00));
@@ -195,12 +205,6 @@ void HomeWindow::on_pushButton_doorHabCommand_clicked(){
     }
     else if(ui->radioButton_doorHabOpen->isChecked()){
         ui->label_doorHabStatus->setText("<font color=orange>Open</font>");
-
-        QPixmap pix(":/img/modelStates/habDoorOpen.jpg");
-        ui->label_model->setPixmap(pix);
-        int logoWidth = ui->label_model->width();
-        int logoHeight = ui->label_model->height();
-        ui->label_model->setPixmap(pix.scaled(logoWidth,logoHeight,Qt::KeepAspectRatio));
 
 //        sendPacket(buildPacket(0b10,0x16,0x00,0x00));
     }

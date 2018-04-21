@@ -11,7 +11,7 @@ public:
     Buffer();
     QQueue<uint8_t> queue;
     CommPacket fetchPacket();
-public slots:
+public:
     void receivePacket();
 };
 
