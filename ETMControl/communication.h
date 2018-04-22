@@ -15,6 +15,7 @@ public:
     uint8_t data;
     CommPacket (uint8_t typ,uint8_t com, uint8_t len, uint8_t dat);
     void sendPacket();
+    void parsePacket();
 };
 
 

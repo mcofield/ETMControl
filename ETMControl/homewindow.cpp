@@ -2,6 +2,7 @@
 #include "communication.h"
 #include "buffer.h"
 #include "ui_homewindow.h"
+
 #include <QMessageBox>
 #include <QLabel>
 #include <QWidget>
@@ -9,6 +10,8 @@
 #include <QPixmap>
 #include <QSerialPort>
 #include <QQueue>
+//#include <sys/time.h>
+#include <chrono>
 
 QSerialPort serial;
 Buffer buffer;
@@ -18,6 +21,7 @@ HomeWindow::HomeWindow(QWidget *parent) :
     ui(new Ui::HomeWindow)
 {
     ui->setupUi(this);
+
 
     ui->plot->addGraph();
     ui->plot->graph(0)->setScatterStyle(QCPScatterStyle::ssCircle);
@@ -45,7 +49,23 @@ HomeWindow::HomeWindow(QWidget *parent) :
         QByteArray data = serial.readAll();
         //mutex->lock()
         for(int i = 0;i<data.size();i++){
-            buffer.queue.enqueue(data[i]);
+            if(data[i]=='\n'){
+                if(buffer.queue.size()==3){
+                    uint8_t temp = buffer.queue.dequeue();
+                    uint8_t first = temp & 0b11000000;
+                    uint8_t second = temp & 0b00111111;
+                    CommPacket currentPacket(first,second,buffer.queue.dequeue(),buffer.queue.dequeue());
+                    currentPacket.parsePacket();
+                    //log packet
+                }
+                else{
+                    data.clear();
+                    //corrupt packet
+                }
+            }
+            else{
+                buffer.queue.enqueue(data[i]);
+            }
 //            QDebug
         }
 //        buffer.queue.push_back();
@@ -97,6 +117,48 @@ void receivePacket(){
 
 }
 
+void CommPacket::parsePacket(){
+    switch(type){
+    case 0b10000000: //commands
+        //this shouldn't happen
+        break;
+    case 0b01000000: //data
+        switch(command){
+        case 0b00100000: //0x20
+            //table cap sensor data
+            break;
+        case 0b00100001: //0x21
+            //clamp cap sensor data
+            break;
+        case 0b00100010: //0x22
+            //table force sensor data
+            break;
+        case 0b00100100: //0x23
+            //Table Position
+            break;
+        case 0b00101000: //0x24
+            //Fake Pressure data
+            ui->qv_x.append(data);
+            ui->plot->plot();
+            break;
+        case 0b00110000: //0x25
+            //HAB Hinge Hall effect sensor data
+            break;
+        case 0b00100110: //0x26
+            //SPC Hinge Hall effect sensor data
+            break;
+        default:
+            //shits broke yo
+            break;
+        }
+
+        break;
+    default:
+        //wtf
+        break;
+    }
+}
+
 
 void HomeWindow::addPoint(double x, double y){
     qv_x.append(x);
@@ -109,6 +171,9 @@ void HomeWindow::clearData(){
 }
 
 void HomeWindow::plot(){
+    unsigned long currentTime = std::chrono::system_clock::now().time_since_epoch() /
+            std::chrono::milliseconds(1);
+    qv_y.append((currentTime - startupTime)/1000);
     ui->plot->graph(0)->setData(qv_x,qv_y);
     ui->plot->replot();
     ui->plot->update();

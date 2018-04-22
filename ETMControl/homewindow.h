@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <missionbuilder.h>
+#include <chrono>
 
 namespace Ui {
 class HomeWindow;
@@ -20,6 +21,10 @@ public:
     void clearData();
     void plot();
     void spoofData();
+    QVector<double> qv_x,qv_y;
+    unsigned long startupTime = std::chrono::system_clock::now().time_since_epoch() /
+            std::chrono::milliseconds(1);
+
 
 private slots:
     void on_pushButton_builder_clicked();
@@ -48,7 +53,9 @@ private:
     Ui::HomeWindow *ui;
     MissionBuilder *builder;
 
-    QVector<double> qv_x, qv_y;
+//    QVector<double> qv_x, qv_y;
+
+
 };
 
 #endif // HOMEWINDOW_H
