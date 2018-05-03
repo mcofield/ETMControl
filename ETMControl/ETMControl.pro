@@ -27,13 +27,11 @@ SOURCES += \
         main.cpp \
         login.cpp \
     homewindow.cpp \
-    missionbuilder.cpp \
     qcustomplot.cpp
 
 HEADERS += \
         login.h \
     homewindow.h \
-    missionbuilder.h \
     etmcontroller.h \
     qcustomplot.h \
     communication.h \
@@ -42,8 +40,7 @@ HEADERS += \
 
 FORMS += \
         login.ui \
-    homewindow.ui \
-    missionbuilder.ui
+    homewindow.ui
 
 RESOURCES += \
     resources.qrc

@@ -24,7 +24,7 @@ void Login::on_pushButton_login_clicked()
 {
     QString username = ui->lineEdit_username->text();
     QString password = ui->lineEdit_password->text();
-    if(username == "test" && password == "test"){
+    if(username == "Lockheed" && password == "DSG"){
         hide();
         home = new HomeWindow(this);
         home->show();

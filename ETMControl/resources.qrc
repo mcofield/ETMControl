@@ -8,8 +8,6 @@
         <file>login.cpp</file>
         <file>login.h</file>
         <file>main.cpp</file>
-        <file>missionbuilder.cpp</file>
-        <file>missionbuilder.h</file>
         <file>qcustomplot.cpp</file>
         <file>qcustomplot.h</file>
         <file>modelStates/depressurizedEmpty.png</file>
